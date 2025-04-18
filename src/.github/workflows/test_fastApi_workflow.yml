@@ -1,0 +1,26 @@
+# .github/workflows/python-shell-example.yml
+name: Python Shell Example
+
+on: [push]
+
+jobs:
+  run-python:
+    runs-on: ubuntu-latest
+
+    # Set a default shell for all steps in this job
+    defaults:
+      run:
+        shell: python
+
+    steps:
+      - name: Print Python version
+        run: |
+          import sys
+          print(sys.version)
+
+      - name: Run Python code with custom shell (bash)
+        # Override the job-level shell for this step
+        run: |
+          echo "This is Bash, not Python"
+          python --version
+        shell: bash
