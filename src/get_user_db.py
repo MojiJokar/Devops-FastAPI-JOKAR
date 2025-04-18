@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from shcemas import Item
 users_db = [
     {
         'user_id': 1,
