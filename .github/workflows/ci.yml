@@ -14,13 +14,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Validate pyproject.toml
-        run: |
-          if [ ! -f pyproject.toml ]; then
-            echo "::error::pyproject.toml not found in root directory"
-            exit 1
-          fi
-          echo "pyproject.toml validation passed"
+     - name: Validate pyproject.toml
+            run: |
+               echo "Current directory: $(pwd)"
+                ls -la  # List all files
+                test -f pyproject.toml || (echo "::error::Missing pyproject.toml";
+      exit 1)
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
